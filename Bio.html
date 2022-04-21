@@ -1,0 +1,71 @@
+<html>
+
+<head>
+    <title> Bio Data </title>
+    <style>
+        .container {
+            background: rgb(4, 229, 236);
+            display: flex;
+            border-radius: 10px;
+            flex-direction: column;
+            align-items: center;
+            width: 500px;
+            margin: 100px auto 0;
+        }
+    </style>
+</head>
+
+<body background="bg2.jpg">
+    <script>
+        function upload() {
+            var img;
+            var preview = document.getElementById("ui").files[0].name;
+            localStorage.setItem("img", preview)
+            document.getElementById('ui').onchange = function (evt) {
+                var tgt = evt.target || window.event.srcElement,
+                    files = tgt.files;
+
+                if (FileReader && files && files.length) {
+                    var fr = new FileReader();
+                    fr.onload = function () {
+                        localStorage.setItem("Image", fr.result)
+
+                    }
+                    fr.readAsDataURL(files[0]);
+                }
+            }
+        }
+        document.getElementById("jsn").addEventListener("change", function () {
+            var file_to_read = document.getElementById("jsn").files[0];
+            var fileread = new FileReader();
+            fileread.onload = function (e) {
+                var content = e.target.result;
+                var inp = JSON.parse(content);
+                localStorage.setItem('det', JSON.stringify(inp));
+                localStorage.setItem('url', url);
+            };
+            fileread.readAsText(file_to_read);
+        });
+    </script>
+<hr>
+<h1 align="center"> Uploading Bio Data </h1>
+<hr>
+<pre>
+<h2>
+    <div class="container">
+<form align="center" action="Display.html">
+
+<label for="ui">Upload Image:</label><input type="file" id="ui" required>
+
+<label for="jsn">Upload Details:</label><input type="file" id="jsn" required>
+
+<input type="submit" value="SUBMIT" onclick="upload();">
+
+</form>
+</div>
+
+    </h2>
+</pre>
+</body>
+
+</html>

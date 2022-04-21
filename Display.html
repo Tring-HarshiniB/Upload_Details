@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <title>Display Details</title>
+    <style>
+        table{
+            font-family: 'Times New Roman', Times, serif;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var image = localStorage.getItem('img');
+        var inp = localStorage.getItem('input');
+        var details = JSON.parser(localStorage.getItem('det'));
+
+        document.write(`
+            < table align="center" >
+                <tr>
+                    <td>Photo:</td>
+                    <td>img src=${image}</td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td>${details.name}</td>
+                </tr>
+                <tr>
+                    <td>Age:</td>
+                    <td>${details.age}</td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td>${details.gender}</td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td>${details.address}</td>
+                </tr>
+            </table >
+        `);
+    </script>
+</body>
+
+</html> 
